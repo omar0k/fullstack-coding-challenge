@@ -13,7 +13,6 @@ const Dashboard = ({ userName }) => {
   const [constituentsComplaints, setConstituentsComplaints] = useState([]);
   const [showConstituentsData, setShowConstituentsData] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const username = location.state?.username;
@@ -31,9 +30,7 @@ const Dashboard = ({ userName }) => {
       console.log(response.data);
       setLoading(false);
     } catch (error) {
-      setError("Error fetchng constituents complaints: " + error.message);
       setLoading(false);
-
       console.error(error.message);
     }
   };
@@ -57,7 +54,6 @@ const Dashboard = ({ userName }) => {
       setTopCompltaintTypes(topComplaintsResponse.data);
       setLoading(false);
     } catch (error) {
-      setError(error.message);
       console.error(error.message);
     }
   };
